@@ -43,7 +43,14 @@ class TajweedController extends Controller
         if (!$tajweed){
             return response()->json(["message" => "Tajweed not found"], 200);
         }
-        return response()->json($tajweed, 200);
+        return response()->json([
+            "id" => $tajweed->id,
+            "name" => $tajweed->name,
+            "description" => $tajweed->description,
+            "example_url" => URL::to($tajweed->example_url),
+            "tajweed_letter_url" => URL::to($tajweed->tajweed_letter_url),
+            "audio_url" => URL::to($tajweed->audio_url),
+        ], 200);
     }
 
 }
