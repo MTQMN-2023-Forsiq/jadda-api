@@ -22,7 +22,10 @@ class CategoryTajweedController extends Controller
 
     public function delete($id)
     {
-        $category_tajweed = CategoryTajweed::findOrFail($id);
+        $category_tajweed = CategoryTajweed::find($id);
+        if (!$category_tajweed){
+            return 'data not found';
+        }
         ImageFileHelper::instance()->delete($category_tajweed->icon);
         $category_tajweed->delete();
         return 'deleted successfully';

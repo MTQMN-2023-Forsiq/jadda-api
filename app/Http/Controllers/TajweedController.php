@@ -28,7 +28,10 @@ class TajweedController extends Controller
 
     public function delete($id)
     {
-        $tajweed = Tajweed::findOrFail($id);
+        $tajweed = Tajweed::find($id);
+        if (!$tajweed){
+            return 'data not found';
+        }
         ImageFileHelper::instance()->delete($tajweed->example_url);
         ImageFileHelper::instance()->delete($tajweed->tajweed_letter_url);
         ImageFileHelper::instance()->delete($tajweed->audio_url);
