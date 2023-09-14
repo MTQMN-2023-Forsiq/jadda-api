@@ -18,10 +18,10 @@ Route::get('/', function () {
 });
 
 Route::post('/category-tajweed/store', [\App\Http\Controllers\CategoryTajweedController::class,'store'])->name('category.tajweed.store');
-Route::get('/category-tajweed/delete/{id}', [\App\Http\Controllers\CategoryTajweedController::class,'delete'])->name('category.tajweed.delete');
+//Route::get('/category-tajweed/delete/{id}', [\App\Http\Controllers\CategoryTajweedController::class,'delete'])->name('category.tajweed.delete');
 
 Route::post('/tajweed/store', [\App\Http\Controllers\TajweedController::class,'store'])->name('tajweed.store');
-Route::get('/tajweed/delete/{id}', [\App\Http\Controllers\TajweedController::class,'delete'])->name('tajweed.delete');
+//Route::get('/tajweed/delete/{id}', [\App\Http\Controllers\TajweedController::class,'delete'])->name('tajweed.delete');
 
 Route::post('/tafsir/store', [\App\Http\Controllers\TafsirController::class,'store'])->name('tafsir.store');
 Route::get('/tafsir/delete/{id}', [\App\Http\Controllers\TafsirController::class,'delete'])->name('tafsir.delete');
