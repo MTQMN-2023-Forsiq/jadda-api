@@ -5,11 +5,14 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\CategoryTajweed;
 use App\Models\Tajweed;
+use App\Traits\HttpResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 
 class TajweedController extends Controller
 {
+
+    use HttpResponse;
 
     public function getAllTajweed()
     {
@@ -34,23 +37,23 @@ class TajweedController extends Controller
                 "contents" => $tajweeds,
             ];
         }
-        return response()->json($data, 200);
+        return $this->success($data);
     }
 
     public function getTajwedById($id)
     {
         $tajweed = Tajweed::find($id);
         if (!$tajweed){
-            return response()->json(["message" => "Tajweed not found"], 200);
+            return $this->error(null,"Tajweed not found", 200);
         }
-        return response()->json([
+        return $this->success([
             "id" => $tajweed->id,
             "name" => $tajweed->name,
             "description" => $tajweed->description,
             "example_url" => URL::to($tajweed->example_url),
             "tajweed_letter_url" => URL::to($tajweed->tajweed_letter_url),
             "audio_url" => URL::to($tajweed->audio_url),
-        ], 200);
+        ]);
     }
 
 }

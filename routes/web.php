@@ -25,10 +25,3 @@ Route::get('/tajweed/delete/{id}', [\App\Http\Controllers\TajweedController::cla
 
 Route::post('/tafsir/store', [\App\Http\Controllers\TafsirController::class,'store'])->name('tafsir.store');
 Route::get('/tafsir/delete/{id}', [\App\Http\Controllers\TafsirController::class,'delete'])->name('tafsir.delete');
-// API Route
-// Tajweed
-Route::get('/api/tajweeds',[\App\Http\Controllers\API\TajweedController::class,'getAllTajweed'])->name('get.all.tajweed');
-Route::get('/api/tajweed/{id}',[\App\Http\Controllers\API\TajweedController::class,'getTajwedById'])->name('get.tajweed.by.id');
-
-// Tafsir
-Route::get('/api/tafsirs',[\App\Http\Controllers\API\TafsirController::class,'getAllTafsir'])->name('get.all.tafsir');
