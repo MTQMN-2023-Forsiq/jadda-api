@@ -147,7 +147,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">Get List Surah</div>
+                    <div class="card-header">Get List Surah <span class="badge bg-primary">GET</span></div>
                     <div class="card-body">
                         <div class="border rounded p-1 mb-3">/surah</div>
                         <a href="https://api.quran.gading.dev/surah" target="_blank" class="btn btn-success btn-sm"><i class="bi bi-play-circle"></i> Run
@@ -157,7 +157,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">Get Surah by Id</div>
+                    <div class="card-header">Get Surah by Id <span class="badge bg-primary">GET</span></div>
                     <div class="card-body">
                         <div class="border rounded p-1 mb-3">/surah/{surah_id}</div>
                         <a href="https://api.quran.gading.dev/surah/1" target="_blank" class="btn btn-success btn-sm"><i class="bi bi-play-circle"></i> Run
@@ -167,7 +167,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">Get Juz By Id</div>
+                    <div class="card-header">Get Juz By Id <span class="badge bg-primary">GET</span></div>
                     <div class="card-body">
                         <div class="border rounded p-1 mb-3">/juz/{juz_id}</div>
                         <a href="https://api.quran.gading.dev/juz/1" target="_blank" class="btn btn-success btn-sm"><i class="bi bi-play-circle"></i> Run
