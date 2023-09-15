@@ -27,4 +27,6 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
     Route::post('/point', [\App\Http\Controllers\API\PointController::class, 'store'])->name('point.store');
     Route::get('/leaderboard', [\App\Http\Controllers\API\PointController::class, 'leaderboard'])->name('point.leaderboard');
+
+    Route::get('/videos', [\App\Http\Controllers\API\ShortController::class,'getAllVideos'])->name('get.all.video');
 });

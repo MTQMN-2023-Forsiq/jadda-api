@@ -25,3 +25,6 @@ Route::post('/tajweed/store', [\App\Http\Controllers\TajweedController::class,'s
 
 Route::post('/tafsir/store', [\App\Http\Controllers\TafsirController::class,'store'])->name('tafsir.store');
 Route::get('/tafsir/delete/{id}', [\App\Http\Controllers\TafsirController::class,'delete'])->name('tafsir.delete');
+
+Route::post('/video/store', [\App\Http\Controllers\ShortController::class, 'store'])->name('video.store');
+Route::get('/video/delete/{id}', [\App\Http\Controllers\ShortController::class, 'delete'])->name('video.delete');
