@@ -14,14 +14,43 @@ class QuranController extends Controller
 
     public function getAllSurah()
     {
-        $surah = Http::get('https://api.quran.gading.dev/surah')['data'];
-        return $this->success($surah);
+        $surahs = Http::get('https://api.quran.gading.dev/surah')['data'];
+        $data = [];
+        foreach ($surahs as $surah){
+            //return $surah;
+            $data[] = [
+                "id" => $surah['number'],
+                "short_name" => $surah["name"]['short'],
+                "name" => $surah["name"]['transliteration']['id'],
+                "revelation" => $surah["revelation"]['id'],
+                "ayat" => $surah['numberOfVerses'],
+                "translation" => $surah['name']['translation']['id'],
+            ];
+        }
+        return $this->success($data);
     }
 
     public function getSurahById($id)
     {
         $surah = Http::get('https://api.quran.gading.dev/surah/'.$id)['data'];
-        return $this->success($surah);
+        $verses = [];
+        foreach ($surah['verses'] as $verse){
+            $verses[] = [
+                'number' => $verse['number']['inSurah'],
+                'text_arab' => $verse['text']['arab'],
+                'translation' => $verse['translation']['id'],
+                'audio' => $verse['audio']['secondary'][0],
+            ];
+        }
+        $data = [
+            "id" => $surah['number'],
+            "ayat" => $surah['numberOfVerses'],
+            "short_name" => $surah["name"]['short'],
+            "name" => $surah["name"]['transliteration']['id'],
+            "revelation" => $surah["revelation"]['id'],
+            "verses" => $verses,
+        ];
+        return $this->success($data);
     }
 
 }
