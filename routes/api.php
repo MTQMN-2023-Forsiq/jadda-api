@@ -29,4 +29,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get('/leaderboard', [\App\Http\Controllers\API\PointController::class, 'leaderboard'])->name('point.leaderboard');
 
     Route::get('/videos', [\App\Http\Controllers\API\ShortController::class,'getAllVideos'])->name('get.all.video');
+
+    Route::get('/surah', [\App\Http\Controllers\API\QuranController::class,'getAllSurah'])->name('get.all.surah');
+    Route::get('/surah/{id}', [\App\Http\Controllers\API\QuranController::class,'getSurahById'])->name('get.surah.by.id');
 });
