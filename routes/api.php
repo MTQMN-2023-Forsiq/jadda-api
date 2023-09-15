@@ -34,4 +34,6 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get('/surah/{id}', [\App\Http\Controllers\API\QuranController::class,'getSurahById'])->name('get.surah.by.id');
 
     Route::get('/hadist', [\App\Http\Controllers\API\HadistController::class, 'getAllHadist'])->name('get.all.hadist');
+
+    Route::get('/jadwal-sholat/{city}', [\App\Http\Controllers\API\JadwalSholatController::class, 'getJadwalSholat'])->name('get.jadwal.sholat');
 });
