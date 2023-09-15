@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         "/category-tajweed/store",
         "/tajweed/store",
         "/tafsir/store",
-        "video/store",
+        "/video/store",
+        "/sholat/store",
     ];
 }

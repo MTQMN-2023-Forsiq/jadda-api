@@ -28,3 +28,6 @@ Route::get('/tafsir/delete/{id}', [\App\Http\Controllers\TafsirController::class
 
 Route::post('/video/store', [\App\Http\Controllers\ShortController::class, 'store'])->name('video.store');
 Route::get('/video/delete/{id}', [\App\Http\Controllers\ShortController::class, 'delete'])->name('video.delete');
+
+Route::post('/sholat/store', [\App\Http\Controllers\SholatController::class, 'store'])->name('sholat.store');
+Route::get('/sholat/delete/{id}', [\App\Http\Controllers\SholatController::class, 'delete'])->name('sholat.delete');
