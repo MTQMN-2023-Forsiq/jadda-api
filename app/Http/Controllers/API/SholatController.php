@@ -18,6 +18,7 @@ class SholatController extends Controller
         $data = [];
         foreach ($sholats as $sholat){
             $data[] = [
+                "id" => $sholat->id,
                 "title" => $sholat->title,
                 "image_url" => URL::to($sholat->image_url),
                 "description" => $sholat->description,
