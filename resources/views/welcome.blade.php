@@ -436,7 +436,7 @@
         <div class="row g-2">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Get Sholat<span class="badge bg-primary">GET</span></div>
+                    <div class="card-header">Get List Gerakan Sholat <span class="badge bg-primary">GET</span></div>
                     <div class="card-body">
                         <p>Request:</p>
                         <div class="border rounded p-1 mb-3 border-warning fw-bold">/sholat</div>
@@ -449,7 +449,7 @@
     "data": [
         {
             "title": "Takbiratul Ikram",
-            "image_url": "storage/images/nxUxD2ifyBfv3XRtqB0O0hazhXQ8m4OyaJ1tO0Y9.png",
+            "image_url": "http://localhost:8000/storage/images/nxUxD2ifyBfv3XRtqB0O0hazhXQ8m4OyaJ1tO0Y9.png",
             "description": "Lorem ipsum dolor",
             "movement_angle": {
                 "left_wrist": 45,
@@ -465,6 +465,39 @@
                 "right_knee": 0,
                 "right_ankle": 0
             }
+        }
+    ]
+}
+</code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--   Video  --}}
+    <div class="mt-4">
+        <h5>Video <span class="badge bg-danger">WITH TOKEN</span></h5>
+        <div class="row g-2">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Get List Video Short <span class="badge bg-primary">GET</span></div>
+                    <div class="card-body">
+                        <p>Request:</p>
+                        <div class="border rounded p-1 mb-3 border-warning fw-bold">/videos</div>
+                        <p>Response:</p>
+                        <pre class="card">
+<code class="language-json">
+{
+    "error": false,
+    "message": null,
+    "data": [
+        {
+            "id": 4,
+            "title": "TEST 1",
+            "info": "Youtube",
+            "video_url": "http://localhost:8000/storage/videos/ExtcLN5CSaMsqxu335Gr5wKhYQJ6FPxH9mvWj7bD.mp4"
         }
     ]
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Sholat;
 use App\Traits\HttpResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class SholatController extends Controller
 {
@@ -18,7 +19,7 @@ class SholatController extends Controller
         foreach ($sholats as $sholat){
             $data[] = [
                 "title" => $sholat->title,
-                "image_url" => $sholat->image_url,
+                "image_url" => URL::to($sholat->image_url),
                 "description" => $sholat->description,
                 "movement_angle" => [
                     "left_wrist" => $sholat->left_wrist,
