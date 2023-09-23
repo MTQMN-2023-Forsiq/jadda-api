@@ -142,7 +142,7 @@
                         <pre class="card">
 <code class="language-json">
 {
-    "value": false,
+    "value": 100,
 }
 </code>
                         </pre>
