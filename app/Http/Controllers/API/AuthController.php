@@ -18,8 +18,8 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validatedData = $request->validate([
-            'email' => ['required','email:dns'],
-            'password' => ['required','min:6'],
+            'email' => ['required', 'email:dns'],
+            'password' => ['required', 'min:6'],
         ]);
         if (!Auth::attempt($validatedData)) {
             return $this->error('', 'User tidak ditemukan', 200);
@@ -42,15 +42,19 @@ class AuthController extends Controller
         if ($user) {
             return $this->error('', 'Email sudah terdaftar', 200);
         }
-        $validatedData = $request->validate([
-            'name' => ['required'],
-            'email' => ['required','email:dns'],
-            'password' => ['required','min:6'],
-        ]);
-        $validatedData['password'] = Hash::make($validatedData['password']);
-        $validatedData['image'] = 'assets/avatar/' . rand(1, 5) . '.png';
-        User::create($validatedData);
-        return $this->success(null, "Registrasi berhasil");
+        try {
+            $validatedData = $request->validate([
+                'name' => ['required'],
+                'email' => ['required', 'email:dns'],
+                'password' => ['required', 'min:6'],
+            ]);
+            $validatedData['password'] = Hash::make($validatedData['password']);
+            $validatedData['image'] = 'assets/avatar/' . rand(1, 5) . '.png';
+            User::create($validatedData);
+            return $this->success(null, "Registrasi berhasil");
+        } catch (\Exception $e) {
+            return $this->success(null, "Pastikan isi data dengan benar");
+        }
     }
 
 }
