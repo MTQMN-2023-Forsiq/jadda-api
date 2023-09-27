@@ -17,23 +17,27 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $validatedData = $request->validate([
-            'email' => ['required', 'email:dns'],
-            'password' => ['required'],
-        ]);
-        if (!Auth::attempt($validatedData)) {
-            return $this->error('', 'User tidak ditemukan', 200);
+        try {
+            $validatedData = $request->validate([
+                'email' => ['required', 'email:dns'],
+                'password' => ['required'],
+            ]);
+            if (!Auth::attempt($validatedData)) {
+                return $this->error('', 'User tidak ditemukan', 200);
+            }
+            $user = User::where('email', $validatedData['email'])->first();
+            $data = [
+                "name" => $user->name,
+                "email" => $user->email,
+                "avatar" => URL::to($user->image),
+            ];
+            return $this->success([
+                'user' => $data,
+                'token' => $user->createToken('Token of ' . $user->username)->plainTextToken,
+            ]);
+        }catch (\Exception $e){
+            return $this->error(null,"Pastikan isi data dengan benar",200);
         }
-        $user = User::where('email', $validatedData['email'])->first();
-        $data = [
-            "name" => $user->name,
-            "email" => $user->email,
-            "avatar" => URL::to($user->image),
-        ];
-        return $this->success([
-            'user' => $data,
-            'token' => $user->createToken('Token of ' . $user->username)->plainTextToken,
-        ]);
     }
 
     public function register(Request $request)
@@ -53,7 +57,7 @@ class AuthController extends Controller
             User::create($validatedData);
             return $this->success(null, "Registrasi berhasil");
         } catch (\Exception $e) {
-            return $this->success(null, "Pastikan isi data dengan benar");
+            return $this->error(null,"Pastikan isi data dengan benar",200);
         }
     }
 
