@@ -19,7 +19,7 @@ class AuthController extends Controller
     {
         $validatedData = $request->validate([
             'email' => ['required', 'email:dns'],
-            'password' => ['required', 'min:6'],
+            'password' => ['required'],
         ]);
         if (!Auth::attempt($validatedData)) {
             return $this->error('', 'User tidak ditemukan', 200);
