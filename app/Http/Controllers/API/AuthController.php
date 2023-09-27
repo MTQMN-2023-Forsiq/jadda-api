@@ -18,8 +18,8 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validatedData = $request->validate([
-            'email' => ['required'],
-            'password' => ['required'],
+            'email' => ['required','email:dns'],
+            'password' => ['required','min:6'],
         ]);
         if (!Auth::attempt($validatedData)) {
             return $this->error('', 'User tidak ditemukan', 200);
@@ -44,8 +44,8 @@ class AuthController extends Controller
         }
         $validatedData = $request->validate([
             'name' => ['required'],
-            'email' => ['required'],
-            'password' => ['required'],
+            'email' => ['required','email:dns'],
+            'password' => ['required','min:6'],
         ]);
         $validatedData['password'] = Hash::make($validatedData['password']);
         $validatedData['image'] = 'assets/avatar/' . rand(1, 5) . '.png';
