@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Helpers\PointHelper;
 use App\Http\Controllers\Controller;
 use App\Traits\HttpResponse;
 use Illuminate\Http\Request;

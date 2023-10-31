@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Helpers\PointHelper;
 use App\Http\Controllers\Controller;
 use App\Models\CategoryTajweed;
 use App\Models\Tajweed;
@@ -14,8 +15,11 @@ class TajweedController extends Controller
 
     use HttpResponse;
 
-    public function getAllTajweed()
+    public function getAllTajweed(Request $request)
     {
+        $user = $request->user();
+        PointHelper::add_daily_user_point($user);
+
         $categories = CategoryTajweed::all();
         $data = [];
         foreach ($categories as $category) {
